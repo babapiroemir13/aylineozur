@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Aylin'e Özür</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #ff9a9e, #fad0c4);
       text-align: center;
-      padding: 100px;
+      padding: 50px 20px;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 3rem; /* büyük başlık */
       color: #fff;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      margin-bottom: 50px;
     }
     button {
-      margin: 15px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
+      margin: 20px;
+      padding: 20px 40px; /* mobil için büyük buton */
+      font-size: 1.5rem; /* mobil uyumlu yazı */
       border: none;
       border-radius: 10px;
       cursor: pointer;
@@ -39,8 +41,8 @@
       background-color: #d32f2f;
     }
     #result {
-      margin-top: 40px;
-      font-size: 2rem;
+      margin-top: 50px;
+      font-size: 2.5rem;
       font-weight: bold;
     }
   </style>
@@ -49,20 +51,26 @@
   <h1>Özür dilerim Aylin</h1>
   <button class="accept" onclick="acceptApology()">Özrünü kabul ediyorum</button>
   <button class="reject" onclick="rejectApology()">Özrünü kabul etmiyorum</button>
-  
+
   <div id="result"></div>
 
   <!-- Şarkı -->
-  <audio id="music" autoplay loop hidden>
+  <audio id="music">
     <source src="meow.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    const music = document.getElementById("music");
+
     function acceptApology() {
       document.getElementById("result").innerHTML = "Yupppiii 🎉🎉🎉";
+      music.play(); // sadece kabul ederse şarkı başlar
     }
+
     function rejectApology() {
       document.getElementById("result").innerHTML = "😔";
+      music.pause();
+      music.currentTime = 0;
     }
   </script>
 </body>
