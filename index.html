@@ -28,7 +28,7 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.3s ease, background-color 0.3s;
     }
     .accept {
       background-color: #4CAF50;
@@ -54,12 +54,17 @@
       color: #fff;
       margin-top: 50px;
     }
+
+    /* Büyüme efekti */
+    .grow {
+      transform: scale(1.3);
+    }
   </style>
 </head>
 <body>
   <div>
     <h1>Özür dilerim Aylin</h1>
-    <button class="accept" onclick="acceptApology()">Özrünü kabul ediyorum</button>
+    <button id="acceptBtn" class="accept" onclick="acceptApology()">Özrünü kabul ediyorum</button>
     <button class="reject" onclick="rejectApology()">Özrünü kabul etmiyorum</button>
     <div id="result"></div>
   </div>
@@ -73,6 +78,7 @@
 
   <script>
     const music = document.getElementById("music");
+    const acceptBtn = document.getElementById("acceptBtn");
 
     function acceptApology() {
       document.getElementById("result").innerHTML = "Yupppiii 🎉🎉🎉";
@@ -83,6 +89,14 @@
       document.getElementById("result").innerHTML = "😔";
       music.pause();
       music.currentTime = 0;
+
+      // Kabul et butonu büyüsün
+      acceptBtn.classList.add("grow");
+
+      // 1 saniye sonra eski haline dönsün
+      setTimeout(() => {
+        acceptBtn.classList.remove("grow");
+      }, 1000);
     }
   </script>
 </body>
